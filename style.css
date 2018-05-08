@@ -1,0 +1,51 @@
+
+.body{
+    height:85vh;
+    width: 100vw; 
+    margin:0;
+}
+
+.header{
+    height:15%; 
+    padding: 5px; 
+}
+
+.navBar li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block; 
+    
+}
+
+.games-played{
+    /* grid-template-columns:  */
+    grid-row:1/4; 
+    background-color:blue; 
+    color: antiquewhite; 
+    width: 80%; 
+}
+
+
+.grid-container{
+    display:grid; 
+    width:80%; 
+    height: 90%; 
+    /* background-color: rgb(126, 34, 106); */
+    grid-template-columns: auto auto auto auto auto auto auto; 
+    box-align: center; 
+    margin: auto; 
+    grid-row-gap: 1vh; 
+    grid-column-gap: 1vh; 
+    }
+
+
+.grid-item{
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 30px;
+  text-align: center;
+  grid-gap: 10px; 
+  position: relative;
+  margin-left: 20px; 
+}
