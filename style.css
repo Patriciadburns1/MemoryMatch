@@ -1,51 +1,102 @@
 
 .body{
-    height:85vh;
+    height:100vh;
     width: 100vw; 
     margin:0;
+    background-image:url("WhiteHousePressRoom.jpg"); 
+}
+
+.behindHeader{
+    background-color: white;
+    opacity: .7;
 }
 
 .header{
-    height:15%; 
-    padding: 5px; 
-}
+    height:20vh;  
+    font-size:4.5em; 
+    text-align: center; 
+    margin-top: 0; 
+    color: rgb(69, 49, 122); 
+    font-family: 'Noticia Text', serif;
+    opacity:1;
+   }   
 
 .navBar li{
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: inline-block; 
-    
-}
+    font-family:'Noticia Text', serif; 
+    }
+
+.itemsInNav{
+    font-family: 'Noticia Text', serif;
+    }
+/* 
+.logo{
+    background-image: url("LadyLiberty.png"); 
+    height: 34%; 
+    width: 30%; 
+    position: relative; 
+    } */
 
 .games-played{
-    /* grid-template-columns:  */
-    grid-row:1/4; 
-    background-color:blue; 
-    color: antiquewhite; 
-    width: 80%; 
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    background-color:rgb(206, 198, 198);  
+    color: rgb(8, 8, 8);
+    width: 15%; 
+    height: 60%;
+    font-size: 2em; 
+    list-style-type: none; 
+    opacity: .7;
+    border: 2px solid white; 
+    font-family:'Noticia Text', serif; 
 }
 
 
 .grid-container{
-    display:grid; 
-    width:80%; 
-    height: 90%; 
-    /* background-color: rgb(126, 34, 106); */
-    grid-template-columns: auto auto auto auto auto auto auto; 
-    box-align: center; 
-    margin: auto; 
+    display:inline-grid; 
+    width:70%; 
+    height: 80%; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr; 
     grid-row-gap: 1vh; 
-    grid-column-gap: 1vh; 
-    }
+    grid-column-gap: 1vw; 
+    position: relative; 
+}
 
 
 .grid-item{
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  font-size: 30px;
-  text-align: center;
-  grid-gap: 10px; 
+  border: 2px solid white; 
   position: relative;
-  margin-left: 20px; 
+}
+
+.front,
+.back{
+    position: absolute; 
+    left: 0;
+    top: 0;
+    height:100%;
+    width: 100%;
+}
+
+.front img {
+    width: 100%;
+    height: 100%;
+}
+
+.back img {
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.hillarysalute {
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+.hiddenSide{
+    display: none; 
 }
