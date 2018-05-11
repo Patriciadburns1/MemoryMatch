@@ -8,7 +8,7 @@ var match_counter = 0;
 var attempts=0; 
 var accuracy=0; 
 var matches=0; 
-
+var games_played=0; 
 
 function intializingApp() {
     console.log("document is loaded");
@@ -36,24 +36,29 @@ function card_clicked(){
         // elementThatWasClicked=$("").find()attr();  
         // $(".grid-item").click(function()
         // {$(".grid-item").off("click")
-       debugger;
+    
         if ($(second_card_clicked).find('img').attr('src') === $(first_card_clicked).find('img').attr('src')) {
             match_counter = match_counter + 1;
+            attempts= attempts + 1; 
             first_card_clicked = null;
             second_card_clicked = null;
             if (match_counter === total_possible_matches) {
+             // game played here 
               alertWinnerTheyHaveWon(); 
             }
         }
         else {
             card_can_be_clicked = false;
             resetCardsAfterDelay();
-
+            attempts=attempts + 1; 
         }
         
     }  
 }
 
+function displayStats(){
+    $(".gamesPlayed").text(attempts); 
+}
 
 function resetGame(){
     console.log("is this working? "); 
