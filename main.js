@@ -7,11 +7,14 @@ var total_possible_matches = 2;
 var match_counter = 0;
 var attempts=0; 
 var accuracy=0; 
+var matches=0; 
 
 
 function intializingApp() {
     console.log("document is loaded");
     $(".grid-item").click(card_clicked);
+    //select button then call reset game function 
+    $(".reset").click(resetGame); 
 }
 
 function card_clicked(){
@@ -33,14 +36,13 @@ function card_clicked(){
         // elementThatWasClicked=$("").find()attr();  
         // $(".grid-item").click(function()
         // {$(".grid-item").off("click")
-       
+       debugger;
         if ($(second_card_clicked).find('img').attr('src') === $(first_card_clicked).find('img').attr('src')) {
             match_counter = match_counter + 1;
             first_card_clicked = null;
             second_card_clicked = null;
             if (match_counter === total_possible_matches) {
-               //function to have alert 
-                alert("You have won!");
+              alertWinnerTheyHaveWon(); 
             }
         }
         else {
@@ -51,9 +53,11 @@ function card_clicked(){
         
     }  
 }
+
+
 function resetGame(){
-    //reset variables to default
-    //return cards to unflipped state
+    console.log("is this working? "); 
+    $("div").removeClass("hiddenSide"); 
 }
 
 function resetCardsAfterDelay(){
@@ -68,3 +72,9 @@ function resetSelectedCards(){
     second_card_clicked = null;
     card_can_be_clicked = true;
 }
+
+function alertWinnerTheyHaveWon(){
+     alert("You have won!"); 
+}
+
+// all images in an array 
