@@ -3,22 +3,23 @@ $(document).ready(intializingApp);
 var card_can_be_clicked = true;
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches = 2;
+var total_possible_matches = 9;
+var attempts = 0;
 var match_counter = 0;
-var attempts=0; 
-var accuracy=0; 
-var matches=0; 
-var games_played=0; 
+var games_played = 0;
 
 function intializingApp() {
     console.log("document is loaded");
-    $(".grid-item").click(card_clicked);
-    //select button then call reset game function 
-    $(".reset").click(resetGame); 
+    $(".card").on("click",card_clicked);
+    $(".reset").on("click",resetGame);
 }
 
-function card_clicked(){
-    if(card_can_be_clicked === false){
+function card_clicked() {
+    if (card_can_be_clicked === false) {
+        return;
+    }
+
+    if ($(this).find('.back').hasClass('hiddenSide')) {
         return;
     }
     console.log("this is working", this);
@@ -26,51 +27,67 @@ function card_clicked(){
     $(elementThatWasClicked).find(".back").addClass("hiddenSide");
     //add a check for both cards if theyre both equal to null/not assigned 
     //if already revealed do nothing 
-   
+
     if (first_card_clicked === null) {
         first_card_clicked = elementThatWasClicked;
-        // elementThatWasClicked=$("").find()attr(); 
     }
     else {
-        second_card_clicked=elementThatWasClicked; 
-        // elementThatWasClicked=$("").find()attr();  
-        // $(".grid-item").click(function()
-        // {$(".grid-item").off("click")
-    
-        if ($(second_card_clicked).find('img').attr('src') === $(first_card_clicked).find('img').attr('src')) {
+        second_card_clicked = elementThatWasClicked;
+        attempts = attempts + 1;
+
+        if ($(second_card_clicked).find('img').attr('src') === $(first_card_clicked).find('img').attr('src')) { 
             match_counter = match_counter + 1;
-            attempts= attempts + 1; 
             first_card_clicked = null;
             second_card_clicked = null;
             if (match_counter === total_possible_matches) {
-             // game played here 
-              alertWinnerTheyHaveWon(); 
+                games_played = games_played + 1; 
+                alertWinnerTheyHaveWon(); 
+                setInterval(closeModal,4000); 
+                ClearDeckforAnotherRound(); 
             }
         }
         else {
             card_can_be_clicked = false;
-            resetCardsAfterDelay();
-            attempts=attempts + 1; 
+            amountOfGamesPlayed(); 
+            resetCardsAfterDelay(); 
         }
-        
-    }  
+        displayStats();
+    }
 }
 
-function displayStats(){
-    $(".gamesPlayed").text(attempts); 
+function displayStats() {
+    var calculatedAccuracy = (match_counter/attempts) * 100;
+    if (match_counter === 0) {
+        calculatedAccuracy = 0;
+    }
+    var formattedAccuracy = calculatedAccuracy.toFixed(2) + '%';
+    $(".attempts").text(attempts);
+    $(".matchCounter").text(match_counter); 
+    $(".accuracyAmount").text(formattedAccuracy);
 }
 
-function resetGame(){
-    console.log("is this working? "); 
-    $("div").removeClass("hiddenSide"); 
+function amountOfGamesPlayed(){
+    $(".gameValue").text(games_played);
 }
 
-function resetCardsAfterDelay(){
- setTimeout(resetSelectedCards,5000);  
+function resetGame() {
+    $("div").removeClass("hiddenSide");
+    var attempts = 0;
+    var accuracy = 0;
+    var match_counter = 0;
+    var games_played = 0;
+    $(".gameValue").text(0); 
+    $(".matchCounter").text(0); 
+    $(".attempts").text(0);
+    $(".accuracyAmount").text(0);
 }
-    
 
-function resetSelectedCards(){
+function resetCardsAfterDelay() {
+    setTimeout(resetSelectedCards, 3000);
+}
+
+
+function resetSelectedCards() {
     $(first_card_clicked).find(".back").removeClass("hiddenSide");
     $(second_card_clicked).find(".back").removeClass("hiddenSide");
     first_card_clicked = null;
@@ -78,8 +95,25 @@ function resetSelectedCards(){
     card_can_be_clicked = true;
 }
 
-function alertWinnerTheyHaveWon(){
-     alert("You have won!"); 
+function resetCardsforNextRound() {
+    setTimeout(clearDeckforAnotherGameWithoutHardReset, 3000);
 }
 
-// all images in an array 
+function clearDeckforAnotherGameWithoutHardReset(){
+    $("div").removeClass("hiddenSide");
+}
+
+function alertWinnerTheyHaveWon() {
+    youHaveWonModal();
+}
+
+function youHaveWonModal(){
+    document.querySelector("#modalShadow").style.display="block"; 
+}
+
+function closeModal(){
+    document.querySelector("#modalShadow").style.display="none"; 
+}
+
+
+

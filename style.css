@@ -8,29 +8,45 @@
 
 .behindHeader{
     background-color: white;
-    opacity: .7;
+    opacity: .8;
+    height: 13vh; 
+    width:100vw;  
 }
 
 .header{
-    height:20vh;  
-    font-size:4.5em; 
+    height:100%;  
+
     text-align: center; 
     margin-top: 0; 
-    color: rgb(69, 49, 122); 
+    color: rgb(28, 16, 61); 
     font-family: 'Noticia Text', serif;
     opacity:1;
-   }   
+    width: 100%; 
+}  
+   
+.header div:first-child {
+    height: 60%;
+    font-size: 2.5em;
+}
 
-.navBar li{
-    list-style-type: none;
+.header div:nth-child(2) {
+    height: 40%;
+}
+
+.header div:nth-child(2) ul {
+    font-size: 1.5em;
+    padding-left: 0;
+}
+
+.itemsInNav li{
+    font-family: 'Noticia Text', serif;
     margin: 0;
     padding: 0;
     display: inline-block; 
     font-family:'Noticia Text', serif; 
-    }
-
-.itemsInNav{
-    font-family: 'Noticia Text', serif;
+    font-size: 1em; 
+    list-style-type: none;
+    color: rgb(28, 16, 61); 
     }
 /* 
 .logo{
@@ -40,25 +56,49 @@
     position: relative; 
     } */
 
+    #modalShadow{
+        position:fixed; 
+        left: 0; 
+        top: 0;
+        width: 100vw; 
+        height: 100vh;
+        background-color:rgba(0,0,0,.4); 
+        display: none; 
+    }
+    #modalBody{
+        position: fixed; 
+        background-color: white; 
+        left: 50%; 
+        top: 50%; 
+        min-height:50%;
+        min-width:50%; 
+        transform: translate( -50%, -50%); 
+        color: rgb(28, 16, 61);
+    }
+
+
 .games-played{
     display: inline-grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
     background-color:rgb(206, 198, 198);  
-    color: rgb(8, 8, 8);
+    color: rgb(28, 16, 61);
     width: 15%; 
     height: 60%;
-    font-size: 2em; 
+    font-size: 1.5em; 
     list-style-type: none; 
     opacity: .7;
     border: 2px solid white; 
     font-family:'Noticia Text', serif; 
+    font: bold; 
+    text-align: center; 
+    vertical-align: top;
 }
 
 
 .grid-container{
     display:inline-grid; 
-    width:70%; 
+    width:80%; 
     height: 80%; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr; 
@@ -69,7 +109,7 @@
 
 
 .grid-item{
-  border: 2px solid white; 
+  border: 3px solid white; 
   position: relative;
 }
 
@@ -97,6 +137,7 @@
     width: 100%;
     height: 100%;
 }
+
 .hiddenSide{
     display: none; 
 }
