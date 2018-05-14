@@ -108,7 +108,7 @@ function resetGame() {
 }
 
 function resetCardsAfterDelay() {
-    setTimeout(resetSelectedCards, 4000);
+    setTimeout(resetSelectedCards, 2000);
 }
 
 function resetCardsforNextRound() {
