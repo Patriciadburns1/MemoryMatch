@@ -19,11 +19,9 @@ function card_clicked() {
     if (card_can_be_clicked === false) {
         return;
     }
-
     if ($(this).find('.back').hasClass('hiddenSide')) {
         return;
     }
-    // console.log("this is working", this);
     var elementThatWasClicked = this;
     $(elementThatWasClicked).find(".back").addClass("hiddenSide");
     //add a check for both cards if theyre both equal to null/not assigned 
@@ -43,7 +41,7 @@ function card_clicked() {
             if (match_counter === total_possible_matches) {
                 games_played = games_played + 1;
                 alertWinnerTheyHaveWon();
-                setInterval(closeModal, 4000);
+                setInterval(closeModal, 6000);
                 resetCardsforNextRound();
             }
         }
@@ -106,14 +104,15 @@ function resetGame() {
     $(".attempts").text(0);
     $(".accuracyAmount").text(0);
     randomCard();
+    calculatedAccuracy=0; 
 }
 
 function resetCardsAfterDelay() {
-    setTimeout(resetSelectedCards, 3000);
+    setTimeout(resetSelectedCards, 4000);
 }
 
 function resetCardsforNextRound() {
-    setTimeout(clearDeckforAnotherGameWithoutHardReset, 3000);
+    setTimeout(clearDeckforAnotherGameWithoutHardReset, 4000);
     randomCard();
 }
 
@@ -127,6 +126,7 @@ function alertWinnerTheyHaveWon() {
 
 function youHaveWonModal() {
     document.querySelector("#modalShadow").style.display = "block";
+    match_counter=0; 
 }
 
 function closeModal() {
