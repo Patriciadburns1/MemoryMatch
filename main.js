@@ -1,137 +1,153 @@
 
 $(document).ready(intializingApp);
-var card_can_be_clicked = true;
-var first_card_clicked = null;
-var second_card_clicked = null;
-var total_possible_matches = 9;
-var attempts = 0;
-var match_counter = 0;
-var games_played = 0;
+
 
 function intializingApp() {
     console.log("document is loaded");
-    $(".card").on("click", card_clicked);
-    $(".reset").on("click", resetGame);
+    const memoryMatchGame = new MemoryMatch();
 }
 
-//  card is clicked then compared - either matched or not 
-function card_clicked() {
-    if (card_can_be_clicked === false) {
-        return;
+class MemoryMatch {
+    constructor() {
+        this.applyClickHandlers();
+        this.card_can_be_clicked = true,
+        this.first_card_clicked = null,
+        this.second_card_clicked = null,
+        this.total_possible_matches = 9,
+        this.attempts = 0,
+        this.match_counter = 0,
+        this.games_played = 0
     }
-    if ($(this).find('.back').hasClass('hiddenSide')) {
-        return;
-    }
-    var elementThatWasClicked = this;
-    $(elementThatWasClicked).find(".back").addClass("hiddenSide");
-    //add a check for both cards if theyre both equal to null/not assigned 
-    //if already revealed do nothing 
 
-    if (first_card_clicked === null) {
-        first_card_clicked = elementThatWasClicked;
+    applyClickHandlers() {
+        $(".card").on("click", this.card_clicked.bind(this));
+        $(".reset").on("click", this.resetGame);
     }
-    else {
-        second_card_clicked = elementThatWasClicked;
-        attempts = attempts + 1;
 
-        if ($(second_card_clicked).find('img').attr('src') === $(first_card_clicked).find('img').attr('src')) {
-            match_counter = match_counter + 1;
-            first_card_clicked = null;
-            second_card_clicked = null;
-            if (match_counter === total_possible_matches) {
-                games_played = games_played + 1;
-                alertWinnerTheyHaveWon();
-                setInterval(closeModal, 6000);
-                resetCardsforNextRound();
-            }
+    amountOfGamesPlayed() {
+        $(".gameValue").text(this.games_played);
+    }
+
+    card_clicked() {
+        if (this.card_can_be_clicked === false) {
+            return;
+        }
+        //this is not this 
+     
+        if ($(event.currentTarget).find('.back').hasClass('hiddenSide')) {
+            return;
+        }
+        this.elementThatWasClicked = event.currentTarget
+        $(this.elementThatWasClicked).find(".back").addClass("hiddenSide");
+
+        if (this.first_card_clicked === null) {
+            this.first_card_clicked = this.elementThatWasClicked;
         }
         else {
-            card_can_be_clicked = false;
-            amountOfGamesPlayed();
-            resetCardsAfterDelay();
+            this.second_card_clicked = this.elementThatWasClicked;
+            this.attempts = this.attempts + 1;
+
+            if ($(this.second_card_clicked).find('img').attr('src') === $(this.first_card_clicked).find('img').attr('src')) {
+                this.match_counter = this.match_counter + 1;
+                this.first_card_clicked = null;
+                this.second_card_clicked = null;
+                if (this.match_counter === this.total_possible_matches) {
+                    this.games_played = this.games_played + 1;
+                    this.alertWinnerTheyHaveWon();
+                    window.setTimeout(this.closeModal.bind(this), 4000);
+                    this.resetCardsforNextRound();
+                }
+            }
+            else {
+                this.card_can_be_clicked = false;
+                this.amountOfGamesPlayed();
+                this.resetCardsAfterDelay();
+            }
+            this.displayStats();
         }
-        displayStats();
     }
-}
-
-//function to randomize divs /cards into grid container 
-function randomCard() {
-    var divs = $(".grid-item");
-    while (divs.length) {
-        var randomIndex = (Math.random() * divs.length) >> 0;
-        var element = divs[randomIndex];
-        $(".grid-container").append(element);
-        divs.splice(randomIndex, 1);
+    randomCard() {
+        let divs = $(".grid-item");
+        while (divs.length) {
+            let randomIndex = (Math.random() * divs.length) >> 0;
+            let element = divs[randomIndex];
+            $(".grid-container").append(element);
+            divs.splice(randomIndex, 1);
+        }
     }
-}
 
-
-// function to reset cards if they are not a match 
-function resetSelectedCards() {
-    $(first_card_clicked).find(".back").removeClass("hiddenSide");
-    $(second_card_clicked).find(".back").removeClass("hiddenSide");
-    first_card_clicked = null;
-    second_card_clicked = null;
-    card_can_be_clicked = true;
-}
-
-// function to display the stats of each round 
-function displayStats() {
-    var calculatedAccuracy = (match_counter / attempts) * 100;
-    // if match counter does not increment then calculatedAccuaracy does not change 
-    if (match_counter === 0) {
-        calculatedAccuracy = 0;
+    resetSelectedCards() {
+        $(this.first_card_clicked).find(".back").removeClass("hiddenSide");
+        $(this.second_card_clicked).find(".back").removeClass("hiddenSide");
+        this.first_card_clicked = null;
+        this.second_card_clicked = null;
+        this.card_can_be_clicked = true;
     }
-    var formattedAccuracy = calculatedAccuracy.toFixed(2) + '%';
-    $(".attempts").text(attempts);
-    $(".matchCounter").text(match_counter);
-    $(".accuracyAmount").text(formattedAccuracy);
-    amountOfGamesPlayed(); 
+
+    displayStats() {
+        let calculatedAccuracy = (this.match_counter / this.attempts) * 100;
+        // if match counter does not increment then calculatedAccuaracy does not change 
+        if (this.match_counter === 0) {
+            calculatedAccuracy = 0;
+        }
+        let formattedAccuracy = calculatedAccuracy.toFixed(2) + '%';
+        $(".attempts").text(this.attempts);
+        $(".matchCounter").text(this.match_counter);
+        $(".accuracyAmount").text(formattedAccuracy);
+        this.amountOfGamesPlayed();
+    }
+
+
+    resetGame() {
+        $("div").removeClass("hiddenSide");
+        this.attempts = 0;
+        this.accuracy = 0;
+        this.match_counter = 0;
+        this.games_played = 0;
+        $(".gameValue").text(0);
+        $(".matchCounter").text(0);
+        $(".attempts").text(0);
+        $(".accuracyAmount").text(0);
+        this.randomCard();
+        this.calculatedAccuracy = 0;
+    }
+    resetCardsAfterDelay() {
+        setTimeout(this.resetSelectedCards.bind(this), 2000);
+    }
+
+    resetCardsforNextRound() {
+        setTimeout(this.clearDeckforAnotherGameWithoutHardReset.bind(this), 3000);
+        this.randomCard();
+    }
+
+    clearDeckforAnotherGameWithoutHardReset() {
+        $("div").removeClass("hiddenSide");
+    }
+
+    alertWinnerTheyHaveWon() {
+        this.youHaveWonModal();
+    }
+
+    youHaveWonModal() {
+        $("#modalShadow").show(); 
+        this.match_counter = 0;
+    }
+
+    closeModal() {
+       $("#modalShadow").hide(); 
+    }
+
 }
 
-function amountOfGamesPlayed() {
-    $(".gameValue").text(games_played);
-}
 
-function resetGame() {
-    $("div").removeClass("hiddenSide");
-    var attempts = 0;
-    var accuracy = 0;
-    var match_counter = 0;
-    var games_played = 0;
-    $(".gameValue").text(0);
-    $(".matchCounter").text(0);
-    $(".attempts").text(0);
-    $(".accuracyAmount").text(0);
-    randomCard();
-    calculatedAccuracy=0; 
-}
 
-function resetCardsAfterDelay() {
-    setTimeout(resetSelectedCards, 2000);
-}
 
-function resetCardsforNextRound() {
-    setTimeout(clearDeckforAnotherGameWithoutHardReset, 4000);
-    randomCard();
-}
 
-function clearDeckforAnotherGameWithoutHardReset() {
-    $("div").removeClass("hiddenSide");
-}
 
-function alertWinnerTheyHaveWon() {
-    youHaveWonModal();
-}
 
-function youHaveWonModal() {
-    document.querySelector("#modalShadow").style.display = "block";
-    match_counter=0; 
-}
 
-function closeModal() {
-    document.querySelector("#modalShadow").style.display = "none";
-}
+
+
 
 
 

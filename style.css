@@ -4,6 +4,7 @@
     width: 100vw; 
     margin:0;
     background-image:url("WhiteHousePressRoom.jpg"); 
+    /* background-repeat: no-repeat;  */
     }
 
 .behindHeader{
@@ -32,7 +33,7 @@
     }
 
 .header div:nth-child(2) {
-    height: 40%;
+    margin-top: -3%;
     }
 
 .header div:nth-child(2) ul {
@@ -50,13 +51,6 @@
     list-style-type: none;
     color: rgb(28, 16, 61); 
     }
-/* 
-.logo{
-    background-image: url("LadyLiberty.png"); 
-    height: 34%; 
-    width: 30%; 
-    position: relative; 
-    } */
 
     #modalShadow{
         position:fixed; 
@@ -130,6 +124,8 @@
 .grid-item{
   border: 3px solid white; 
   position: relative;
+  width: 10vw; 
+  height: 20vmin; 
  }
 
 .front,
@@ -159,4 +155,20 @@
 
 .hiddenSide{
     display: none; 
+}
+
+@media screen and (min-device-width: 321px) and (max-device-width: 480px){
+    .games-played{
+      display: flex; 
+      justify-content: last baseline; 
+    }
+    .grid-container{
+        display: flex; 
+        justify-content: center; 
+    }
+    .body{
+        background-image:none;  
+        background-color: lightgrey; 
+    }
+
 }
