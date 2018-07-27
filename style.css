@@ -3,13 +3,14 @@
     height:100vh;
     width: 100vw; 
     margin:0;
-    /* background-color:rgb(197, 197, 197);  */
-    /* background: url(images.jpeg) no-repeat center center fixed;  */
-    /* background-image: url(images.jpeg);  */
+    background-color: #e6dae21c; 
+:    /* background: url(images.jpeg) no-repeat center center fixed;  */
+    /* background-image: url(monument.jpeg);  */
+    /* background-repeat: no-repeat center center fixed;  */
     }
 
 .behindHeader{
-    background-color: white;
+    /* background-color: white; */
     opacity: .8;
     height: 10vh; 
     width:100vw;  
@@ -28,6 +29,7 @@
 .header div:first-child {
     height: 68%;
     font-size: 2.25em;
+    color: grey; 
     }
 
 .header div:nth-child(2) {
@@ -172,13 +174,14 @@
 
 @media screen and (min-device-width: 321px) and (max-device-width: 480px){
     .games-played{
-     margin-top: 12.5%; 
+     margin-top: 9.5%; 
      position: relative; 
     }
 
     .header div:first-child {
         height: 63%;
         font-size: 4.25em;
+        color: grey; 
     }
 
     .grid-item{
