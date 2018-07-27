@@ -3,14 +3,15 @@
     height:100vh;
     width: 100vw; 
     margin:0;
-    background-image:url("WhiteHousePressRoom.jpg"); 
-    /* background-repeat: no-repeat;  */
+    /* background-color:rgb(197, 197, 197);  */
+    /* background: url(images.jpeg) no-repeat center center fixed;  */
+    /* background-image: url(images.jpeg);  */
     }
 
 .behindHeader{
     background-color: white;
     opacity: .8;
-    height: 13vh; 
+    height: 10vh; 
     width:100vw;  
     }
 
@@ -18,18 +19,15 @@
     height:100%;  
     text-align: center; 
     margin-top: 0; 
-    color: rgb(28, 16, 61); 
+    color:  hsl(256, 5%, 35%);
     font-family: 'Noticia Text', serif;
     opacity:1;
     width: 100%; 
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
     }  
    
 .header div:first-child {
-    height: 60%;
-    font-size: 2.5em;
+    height: 68%;
+    font-size: 2.25em;
     }
 
 .header div:nth-child(2) {
@@ -37,7 +35,7 @@
     }
 
 .header div:nth-child(2) ul {
-    font-size: 1.5em;
+    font-size: 1.25em;
     padding-left: 0;
 }
 
@@ -49,7 +47,7 @@
     font-family:'Noticia Text', serif; 
     font-size: 1em; 
     list-style-type: none;
-    color: rgb(28, 16, 61); 
+    color: grey;  
     }
 
     #modalShadow{
@@ -88,44 +86,45 @@
 }
 
 .games-played{
-    display: inline-grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 1fr);
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    align-items: center; 
     background-color:rgb(206, 198, 198);  
-    color: rgb(28, 16, 61);
-    width: 10%; 
-    height: 60%;
-    font-size: 1.5em; 
+    color: hsl(256, 5%, 35%);
+    font-size: 1.25em; 
     list-style-type: none; 
-    opacity: .7;
+    opacity: 2.7;
     border: 2px solid white; 
     font-family:'Noticia Text', serif; 
     font: bold; 
     text-align: center; 
+    margin: auto; 
     vertical-align: top;
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-             0px 8px 13px rgba(0,0,0,0.1),
-             0px 18px 23px rgba(0,0,0,0.1);
+    /* text-shadow: 0px 4px 3px hsl(256, 5%, 35%);
+                0px 8px 13px  hsl(256, 5%, 35%);
+                0px 18px 23px  hsl(256, 5%, 35%); */
+
     }
 
 
 .grid-container{
-    display:inline-grid; 
-    width:80%; 
+    display:grid;
+    width:100%; 
     height: 80%; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr; 
     grid-row-gap: 1vh; 
     grid-column-gap: 1vw; 
-    position: relative; 
     }
 
 
 .grid-item{
-  border: 3px solid white; 
   position: relative;
   width: 10vw; 
   height: 20vmin; 
+  justify-self: center; 
+  box-shadow: #464646 4px 4px 7px; 
  }
 
 .front,
@@ -157,18 +156,50 @@
     display: none; 
 }
 
+.reset{
+    font-family: 'Noticia Text', serif;
+    cursor: pointer; 
+    position: relative;
+    /* left: 2vw;
+    top: 4vh; */
+    box-shadow: 2px 3px 3px  #464646; 
+    border-radius: 4px;
+    padding: 6px; 
+}
+
+
+
+
 @media screen and (min-device-width: 321px) and (max-device-width: 480px){
     .games-played{
-      display: flex; 
-      justify-content: last baseline; 
-    }
-    .grid-container{
-        display: flex; 
-        justify-content: center; 
-    }
-    .body{
-        background-image:none;  
-        background-color: lightgrey; 
+     margin-top: 12.5%; 
+     position: relative; 
     }
 
-}
+    .header div:first-child {
+        height: 63%;
+        font-size: 4.25em;
+    }
+
+    .grid-item{
+        position: relative;
+        /* width: 10vw; 
+        height: 20vmin;  */
+        width: 16vw;
+        height: 24vmin;
+        justify-self: center; 
+        box-shadow: #464646 4px 4px 7px; 
+       }
+
+    .grid-container{
+    display:grid;
+    width:100%; 
+    height: 80%; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr; 
+    /* grid-row-gap: 1vh; 
+    grid-column-gap: 1vw;  */
+    }
+
+} 
+
