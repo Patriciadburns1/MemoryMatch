@@ -4,10 +4,8 @@
     width: 100vw; 
     margin:0;
     background-color: #e6dae21c; 
-   /* background: url(images.jpeg) no-repeat center center fixed;  */
-    /* background-image: url(monument.jpeg);  */
-    /* background-repeat: no-repeat center center fixed;  */
-    }
+    background-image: url(monument.jpeg); 
+}
 
 .behindHeader{
     /* background-color: white; */
@@ -27,9 +25,9 @@
     }  
    
 .header div:first-child {
-    height: 68%;
-    font-size: 2.25em;
-    color: grey; 
+    font-size: 3.25em;
+    height: 75%; 
+    color: #0e0d0d;
     }
 
 .header div:nth-child(2) {
@@ -183,7 +181,7 @@
     .header div:first-child {
         height: 63%;
         font-size: 4.25em;
-        color: grey; 
+        color: #0e0d0d;
     }
 
     .grid-item{
@@ -201,7 +199,6 @@
     height: 80%; 
     grid-template-columns: 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; 
-  =
     }
 
 } 

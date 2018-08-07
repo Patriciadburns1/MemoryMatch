@@ -32,7 +32,7 @@ class MemoryMatch {
         if (this.card_can_be_clicked === false) {
             return;
         }
-        //this is not this 
+        
      
         if ($(event.currentTarget).find('.back').hasClass('hiddenSide')) {
             return;
