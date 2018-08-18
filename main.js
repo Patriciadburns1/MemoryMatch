@@ -28,7 +28,7 @@ class MemoryMatch {
         $(".gameValue").text(this.games_played);
     }
 
-    card_clicked() {
+    card_clicked(event) {
         if (this.card_can_be_clicked === false) {
             return;
         }
