@@ -1,7 +1,6 @@
 
 .body{
     height:100vh;
-    /* width: 100vw;  */
     margin:0;
     background-image: url(images/monument.jpg); 
     background-size: cover;    
@@ -9,8 +8,6 @@
 
 .behindHeader{
     opacity: .8;
-    /* height: 15vh;  */
-    /* width:100vw;   */
     min-height: 85px; 
     }
 
@@ -22,6 +19,7 @@
     font-family: 'Noticia Text', serif;
     opacity:1;
     width: 100%; 
+    font-size: 12px; 
     }  
    
 .header div:first-child {
@@ -30,9 +28,9 @@
     color: #e2dede; 
     }
 
-.header div:nth-child(2) {
+/* .header div:nth-child(2) {
     /* margin-top: -3%; */
-    }
+    /* } */ 
 
 .header div:nth-child(2) ul {
     font-size: 1.25em;
@@ -107,7 +105,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
 .grid-container{
     display:grid;
     width:100%; 
-    height: 80%; 
+    height: 74%; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr; 
     grid-row-gap: 4vh; 
@@ -167,7 +165,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
 
 
 
-@media screen and (min-device-width: 320px) and (max-device-width: 480px){
+@media screen and portrait and (min-device-width: 320px) and (max-device-width: 480px){
     .games-played{
      margin-top: 9.5%; 
      position: relative; 
