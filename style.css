@@ -1,7 +1,7 @@
 
 .body{
     height:100vh;
-    width: 100vw; 
+    /* width: 100vw;  */
     margin:0;
     background-image: url(images/monument.jpg); 
     background-size: cover;    
@@ -9,8 +9,9 @@
 
 .behindHeader{
     opacity: .8;
-    height: 15vh; 
+    /* height: 15vh;  */
     /* width:100vw;   */
+    min-height: 85px; 
     }
 
 .header{
@@ -30,7 +31,7 @@
     }
 
 .header div:nth-child(2) {
-    margin-top: -3%;
+    /* margin-top: -3%; */
     }
 
 .header div:nth-child(2) ul {
@@ -158,8 +159,6 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
     font-family: 'Noticia Text', serif;
     cursor: pointer; 
     position: relative;
-    /* left: 2vw;
-    top: 4vh; */
     box-shadow: 2px 3px 3px  #464646; 
     border-radius: 4px;
     padding: 6px; 
@@ -176,7 +175,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
 
     .header div:first-child {
         height: 63%;
-        font-size: 4.25em;
+        font-size: 1.25em;
         color: #e2dede; 
     }
 
