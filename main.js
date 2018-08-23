@@ -21,7 +21,7 @@ class MemoryMatch {
 
     applyClickHandlers() {
         $(".card").on("click", this.card_clicked.bind(this));
-        $(".reset").on("click", this.resetGame);
+        $(".reset").on("click", this.resetGame.bind(this));
     }
 
     amountOfGamesPlayed() {
@@ -52,8 +52,8 @@ class MemoryMatch {
                 this.first_card_clicked = null;
                 this.second_card_clicked = null;
                 if (this.match_counter === this.total_possible_matches) {
-                    this.games_played = this.games_played + 1;
                     this.alertWinnerTheyHaveWon();
+                    this.games_played = this.games_played + 1;
                     window.setTimeout(this.closeModal.bind(this), 4000);
                     this.resetCardsforNextRound();
                 }
@@ -74,6 +74,7 @@ class MemoryMatch {
             $(".grid-container").append(element);
             divs.splice(randomIndex, 1);
         }
+        
     }
 
     resetSelectedCards() {
