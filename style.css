@@ -67,7 +67,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
         min-height:50%;
         min-width:50%; 
         transform: translate( -50%, -50%); 
-        color: rgb(62, 218, 24); 
+        color: purple; 
         font-size: 2em;  
         text-align: center; 
         font-family: 'Cinzel', serif;
@@ -122,6 +122,8 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
   max-height: 19.7vh; 
   justify-self: center; 
   box-shadow: #464646 4px 4px 7px; 
+  user-select: none;
+  cursor: pointer;
  }
 
 .front,
