@@ -1,10 +1,9 @@
 
 $(document).ready(intializingApp);
-
+var memoryMatch;
 
 function intializingApp() {
-    console.log("document is loaded");
-    const memoryMatchGame = new MemoryMatch();
+    memoryMatch = new MemoryMatch();
 }
 
 class MemoryMatch {
@@ -52,10 +51,10 @@ class MemoryMatch {
                 this.first_card_clicked = null;
                 this.second_card_clicked = null;
                 if (this.match_counter === this.total_possible_matches) {
-                    this.alertWinnerTheyHaveWon();
+                    this.alertWinnerTheyHaveWon();  
                     this.games_played = this.games_played + 1;
                     window.setTimeout(this.closeModal.bind(this), 4000);
-                    this.resetCardsforNextRound();
+                    window.setTimeout(this.resetCardsforNextRound.bind(this), 4000);
                 }
             }
             else {
@@ -132,6 +131,7 @@ class MemoryMatch {
     youHaveWonModal() {
         $("#modalShadow").show(); 
         this.match_counter = 0;
+        this.attempts = 0; 
     }
 
     closeModal() {
