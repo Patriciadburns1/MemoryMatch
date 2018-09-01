@@ -28,14 +28,16 @@
     color: #e2dede; 
     }
 
-/* .header div:nth-child(2) {
-    /* margin-top: -3%; */
-    /* } */ 
+
 
 .header div:nth-child(2) ul {
     font-size: 1.25em;
     padding-left: 0;
     }   
+
+.itemsInNav>ul>a:hover{
+    color: rgb(185, 19, 185); 
+    }
 
 a:link, a:visited, a:hover, a:active .itemsInNav li{
     font-family: 'Noticia Text', serif;
@@ -49,32 +51,33 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
     }
       
 
-    #modalShadow{
-        position:fixed; 
-        left: 0; 
-        top: 0;
-        width: 100vw; 
-        height: 100vh;
-        background-color:rgba(0,0,0,.4); 
-        display: none; 
-        }
+#modalShadow{
+    position:fixed; 
+    left: 0; 
+    top: 0;
+    width: 100vw; 
+    height: 100vh;
+    background-color:rgba(0,0,0,.4); 
+    display: none; 
+    }
 
-    #modalBody{
-        position: fixed; 
-        background-color: white; 
-        left: 50%; 
-        top: 50%; 
-        min-height:50%;
-        min-width:50%; 
-        transform: translate( -50%, -50%); 
-        color: purple; 
-        font-size: 2em;  
-        text-align: center; 
-        font-family: 'Cinzel', serif;
-        }
+#modalBody{
+    position: fixed; 
+    background-color: white; 
+    left: 50%; 
+    top: 50%; 
+    min-height:50%;
+    min-width:50%; 
+    transform: translate( -50%, -50%); 
+    color: purple; 
+    font-size: 2em;  
+    text-align: center; 
+    font-family: 'Cinzel', serif;
+    }
+   
 
 .HillaryGif{
-    width: 100%; 
+    width: 90%; 
     height: 100%; 
     }
 
@@ -90,7 +93,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
     align-items: center; 
     background-color:rgb(206, 198, 198);  
     color: hsl(256, 5%, 35%);
-    font-size: 1.25em; 
+    font-size: 1em; 
     list-style-type: none; 
     opacity: 2.7;
     border: 2px solid white; 
@@ -101,7 +104,7 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
     vertical-align: top;
     }
 
-
+   
 .grid-container{
     display:grid;
     width:100%; 
@@ -115,16 +118,22 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
 
 
 .grid-item{
-  position: relative;
-  width: 100%; 
-  height:auto; 
-  max-width: 16vh; 
-  max-height: 19.7vh; 
-  justify-self: center; 
-  box-shadow: #464646 4px 4px 7px; 
-  user-select: none;
-  cursor: pointer;
- }
+    position: relative;
+    width: 100%; 
+    height:auto; 
+    max-width: 16vh; 
+    max-height: 19.7vh; 
+    justify-self: center; 
+    box-shadow: #464646 4px 4px 7px; 
+    user-select: none;
+    cursor: pointer;
+    align-items: baseline;
+    }
+
+  .grid-item:hover{
+    animation: bounce 1s; 
+  }
+
 
 .front,
 .back{
@@ -133,47 +142,60 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
     top: 0;
     height:100%;
     width: 100%;
-}
+    }
 
-.front img {
+.front img{
     width: 100%;
-    height: 100%;
-}
+    height: 100%; 
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;   
+    }
 
 .back img {
     max-width: 100%;
     min-height: 100%;
-}
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    }
 
 .hillarysalute {
     vertical-align: middle;
     width: 100%;
     height: 100%;
-}
+    }   
 
 .hiddenSide{
     display: none; 
-}
+    }
 
 .reset{
     font-family: 'Noticia Text', serif;
     cursor: pointer; 
     position: relative;
     box-shadow: 2px 3px 3px  #464646; 
-    border-radius: 4px;
+    border-radius: 25%;
     padding: 6px; 
-}
-
-
-
-
-@media screen and portrait and (min-device-width: 320px) and (max-device-width: 480px){
-    .games-played{
-     margin-top: 9.5%; 
-     position: relative; 
     }
 
-    .header div:first-child {
+
+
+@media screen and (min-device-width: 320px) and (max-device-width: 641px) and (orientation: portrait){
+    .games-played {
+        position: relative; 
+        font-size:1em; 
+        margin-top: 1.5%;
+        width: 100%; 
+        display: flex; 
+        flex-flow: wrap; 
+    }
+
+    .header div:first-child{
         height: 63%;
         font-size: 1.25em;
         color: #e2dede; 
@@ -186,17 +208,43 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
         height: auto;
         justify-self: center; 
         box-shadow: #464646 4px 4px 7px; 
-       }
-
-    .grid-container{
-    display:grid;
-    width:100%; 
-    height: 80%; 
-    grid-template-columns: 1fr 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; 
     }
 
-} 
+    .grid-container{
+        display:grid;
+        width:100%; 
+        height: 80%; 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    }
+
+    #modalBody{
+        font-size: 1.25em;
+        min-height: 21%;
+        height: 17%;
+        min-width: auto;
+        top: 45%
+    }
+    
+    .HillaryGif {
+        width: 100%;
+        height: auto;
+    }
+
+    .eachStat{
+        width: 30%; 
+    }
+    .buttonBottom{
+        margin-bottom: 5%; 
+    }
+}
+
+
+
+
+
+
+
 
 @keyframes bounce {
 	0%, 20%, 60%, 100% {
@@ -215,7 +263,16 @@ a:link, a:visited, a:hover, a:active .itemsInNav li{
 	}
 }
 
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 640px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .games-played{
+        font-size:1em;
+    }
 
-img:hover {
-	animation: bounce 1s;
+    .header div:first-child {
+    font-size: 1.25em;
+    }
 }
